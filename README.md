@@ -258,14 +258,143 @@ print (money.value)
 （2）迭代器进行遍历： for line in file
 
 14. 如何用python输出一个Fibonacci数列？
+```
+>>> a,b = 0,1
+>>> while b<100:
+...     print(b)
+...     a,b = b, a+b
+...
+1
+1
+2
+3
+5
+8
+13
+21
+34
+55
+89
+```
 
 15. 介绍一个python中webbrowser的用法
 
 16. 解释一下python的and-or语法
+    ```
+    >>> a = "first"
+    >>> b = "second"
+    >>> 1 and a or b
+    'first'
+    >>> 0 and a or b
+    'second'
+    ```
+    和C语言中的 双目运算符  bool ？a ：b相似 
+    第一部分计算为真  则返回a， 若第一部分计算为假，则返回b
+    
+    注意： 当c为空串时, and or会失败， 想要用的话  就用列表 [""] 永远不为假
+    ```
+    >>> c = ""
+    >>> 1 and c or b
+    'second'
+    >>> 1 and [c] or b
+    ['']
+    ```
 
 17. python 是如何进行类型转换的
+    python 提供了将变量或值从一种类型转换成另一种类型的内置函数 
+    ```
+    >>> int('123')  #字符串转整数
+    123
+    >>> str(123)
+    '123'
+    >>> float('123')
+    123.0
+    >>> float(123)
+    123.0
+    ```
 
 18. python如何实现单例模式？其他23种设计python如何实现？
+    方1: 使用__metaclass__(元类)的高级python用法   python2 中可用 python3 不可用
+    ```python
+    class Singleton(type):
+    def __init__(cls, name, bases, dict):
+        super(Singleton, cls).__init__(name, bases, dict)
+        cls._instance = None
+
+    def __call__(cls, *args, **kwargs):
+        if cls._instance is None:
+            cls._instance = super(Singleton, cls).__call__(*args, **kwargs)
+        return cls._instance
+
+
+    class Myclass(object):
+        __metaclass__ = Singleton
+
+
+    one = Myclass()
+    two = Myclass()
+
+    two.a = 3
+    print(two.a)
+    print(one.a)
+
+    print (id(one))
+    print (id(two))
+    # python 2 执行结果为：
+    guogx@guogxdeMacBook-Pro:~/git/Bee/daemon_s% python fileout.py
+    3
+    3
+    4359780624
+    4359780624
+    
+    #python3 为one.a属性， 注释后执行结果为：
+    guogx@guogxdeMacBook-Pro:~/git/Bee/daemon_s% /Users/guogx/anaconda3/bin/python fileout.py
+    3
+    4314905288
+    4314905232
+    ```
+    方2:使用装饰器（decorator）, 这是一种更pythonic的方法
+    单利类本身不知道自己是单例的 因为它本身（自己的代码）并不是单例的
+    
+    ```
+    
+    def singleton(cls, *args, **kwargs):
+    instances = {}
+    def _singleton():
+        if cls not in instances:
+            instances[cls] = cls(*args, **kwargs)
+        return instances[cls]
+    return _singleton
+
+    @singleton
+    class Myclass4(object):
+        a = 1
+        def __init__(self, x=0):
+            self.x = x
+
+    one = Myclass4()
+    two = Myclass4()
+
+    two.a = 3
+    print(two.a)
+    print(one.a)
+
+    print (id(one))
+    print (id(two))
+    #执行结果
+    guogx@guogxdeMacBook-Pro:~/git/Bee/daemon_s% python fileout.py
+    3
+    3
+    4380547600
+    4380547600
+    guogx@guogxdeMacBook-Pro:~/git/Bee/daemon_s% 
+    guogx@guogxdeMacBook-Pro:~/git/Bee/daemon_s% 
+    guogx@guogxdeMacBook-Pro:~/git/Bee/daemon_s% /Users/guogx/anaconda3/bin/python fileout.py
+    3
+    3
+    4520997160
+    4520997160
+    ```
 
 19. 如何用python来进行查询和替换一个文本字符串
 
