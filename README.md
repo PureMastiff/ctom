@@ -11,7 +11,7 @@ https://mp.weixin.qq.com/s?__biz=MzU2MDAyNzk5MA==&mid=2247483801&idx=1&sn=b56f02
     python代码的执行是由python虚拟机（也叫解释器主循环mCPython版本）来控制，python在设计之初就考虑到在解释器的主循环中，同时只有一个线程在执行，即在任意时刻，只有一个线程在解释器中运行。对python虚拟机的访问由全局解释器锁（GIL）来控制，正是这个锁能保证同一时刻只有一个线程在运行。
    在多线程环境中，python虚拟机按以下方式执行：
       1.  设置GIL
-         2. 切换到一个线程去执行
+      2. 切换到一个线程去执行
       3. 运行：
       a. 执行数量的字节码指令，或者 b. 线程主动让出控制（可以调用time.sleep(0)）
       4. 把线程设置为睡眠状态
@@ -94,7 +94,7 @@ https://mp.weixin.qq.com/s?__biz=MzU2MDAyNzk5MA==&mid=2247483801&idx=1&sn=b56f02
 7. 对比一下dict中的items与iteritems
    dict中 items 方法作用：是将字典中的所有项，以列表的方式返回。因为字典是无序的，所以用items方法返回字典的所有项 也是没有顺序的
    字典中iteritems方法作用：与items方法作用大致相同。不iteritems返回的不是列表 而是迭代器，不占用额外的内存
-   `
+   ```
    #python3
    dict={'key1':'value1','key2':'value2'}
    >>> for i,j in dict_s.items():
@@ -103,7 +103,7 @@ https://mp.weixin.qq.com/s?__biz=MzU2MDAyNzk5MA==&mid=2247483801&idx=1&sn=b56f02
    key1 value1
    key2 value2
    
-   `
+   ```
    python3 中已经取消了iteritems属性，用items代替, 因为dict 返回的不再是列表啦 而是dict_items类 可以用for 遍历
 
 8. inspect模块有什么用
