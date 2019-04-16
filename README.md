@@ -201,36 +201,36 @@ https://mp.weixin.qq.com/s?__biz=MzU2MDAyNzk5MA==&mid=2247483801&idx=1&sn=b56f02
     优缺点：
     优点：快速在进程间传递参数
     缺点：数据安全上存在风险，内存中的内容会被其他进程覆盖或更改
-    ```python
-    from multiprocessing import Process, Value
-    import time
-    import random
+ ```python
+from multiprocessing import Process, Value
+import time
+import random
 
-    def save_money(money):
-        for i in range(10):
-            time.sleep(0.1)
-            money.value += random.randint(1, 200)
+def save_money(money):
+    for i in range(10):
+        time.sleep(0.1)
+        money.value += random.randint(1, 200)
 
-    def take_money(money):
-        for i in range(10):
-            time.sleep(0.1)
-            money.value -= random.randint(1, 200)
+def take_money(money):  
+    for i in range(10):
+        time.sleep(0.1)
+        money.value -= random.randint(1, 200)
 
-    # money为共享内存对象,给他一个初始值2000，类型为正型“i”
-    # 相当于开辟了一个空间，同时绑定值2000
-    money = Value('i', 2000)
+# money为共享内存对象,给他一个初始值2000，类型为正型“i”
+# 相当于开辟了一个空间，同时绑定值2000
+money = Value('i', 2000)
 
-    d = Process(target=save_money, args=(money,))#这里面money是全局的，不写也可
-    d.start()
+d = Process(target=save_money, args=(money,))#这里面money是全局的，不写也可
+d.start()
 
-    w = Process(target=take_money, args=(money,))#这里面money是全局的，不写也可
-    w.start()
+w = Process(target=take_money, args=(money,))#这里面money是全局的，不写也可
+w.start()
 
-    d.join()
-    w.join()
+d.join()
+w.join()
 
-    print (money.value)
-    ```
+print (money.value)
+ ```
 
 12. 什么是lambda函数？它有什么好处？
 
@@ -277,6 +277,7 @@ or python类中self的含义
 34.  b,a = a,b
 35. 写一个函数，输入一个字符串，返回倒序排列的结果 如 string_reverse(‘abcdefg’)输出为gfedcba
 36. 说一下下面的代码片段存在的问题
+```
 from amodule import * # amodule is an exist module  
    
 class dummyclass(object):  
@@ -299,6 +300,7 @@ if __name__ == "__main__":
     print object.can_speak()  
     print object.man()  
     print object.is_d
+```
 1. __init__中 用pass
 2.用object关键字命名实例化对象
 3.@classmethod 类函数与成员函数区分开用cls
