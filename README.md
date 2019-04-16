@@ -1,55 +1,110 @@
 ### python 题宗
----
+
+
 https://zhuanlan.zhihu.com/p/21856569
 https://www.cnblogs.com/chongdongxiaoyu/p/9054847.html
 
----
 图像处理
 https://mp.weixin.qq.com/s?__biz=MzU2MDAyNzk5MA==&mid=2247483801&idx=1&sn=b56f02e8e425c1f60c4fde0bb1913a1f&chksm=fc0f01a0cb7888b6ad87946efed59b372cfa6fd45c771e3a0159e5ab8380da41c99a32c4a214#rd
----
 
 1. 什么是GIL 谈谈你对GIL的理解？
-python代码的执行是由python虚拟机（也叫解释器主循环mCPython版本）来控制，python在设计之初就考虑到在解释器的主循环中，同时只有一个线程在执行，即在任意时刻，只有一个线程在解释器中运行。对python虚拟机的访问由全局解释器锁（GIL）来控制，正是这个锁能保证同一时刻只有一个线程在运行。
-在多线程环境中，python虚拟机按以下方式执行：
-1.  设置GIL
-2. 切换到一个线程去执行
-3. 运行：
-a. 执行数量的字节码指令，或者 b. 线程主动让出控制（可以调用time.sleep(0)）
-4. 把线程设置为睡眠状态
-5. 解锁GIL
-6. 再次重复以上所有步骤
+    python代码的执行是由python虚拟机（也叫解释器主循环mCPython版本）来控制，python在设计之初就考虑到在解释器的主循环中，同时只有一个线程在执行，即在任意时刻，只有一个线程在解释器中运行。对python虚拟机的访问由全局解释器锁（GIL）来控制，正是这个锁能保证同一时刻只有一个线程在运行。
+   在多线程环境中，python虚拟机按以下方式执行：
+      1.  设置GIL
+         2. 切换到一个线程去执行
+      3. 运行：
+      a. 执行数量的字节码指令，或者 b. 线程主动让出控制（可以调用time.sleep(0)）
+      4. 把线程设置为睡眠状态
+      5. 解锁GIL
+      6. 再次重复以上所有步骤
 
-在调用外部代码（如C/C++扩展函数）的时候，GIL将会被锁定，直到这个函数结束为止（由于在这期间没有python字节码被运行，所以不会做线程切换）
+   在调用外部代码（如C/C++扩展函数）的时候，GIL将会被锁定，直到这个函数结束为止（由于在这期间没有python字节码被运行，所以不会做线程切换）
 2. 什么是元类？
 3. 说说decorator的用法和它的应用场景， 可以的话，写一个decorator
 4. 为什么要用函数装饰器？请举例
-装饰器的作用和功能：
-1. 引入日志
-2. 函数进行时间统计
-3. 执行函数执行前的预处理（改变函数的入参）
-4.执行函数后的清理功能
-5. 权限校验等场景
-6. 缓存
+   装饰器的作用和功能：
+   1. 引入日志
+   2. 函数进行时间统计
+   3. 执行函数执行前的预处理（改变函数的入参）
+   4.执行函数后的清理功能
+   5. 权限校验等场景
+   6. 缓存
 5. 是否遇到过python模块间循环引用的问题，如何避免它？
-导入模块的实质是要将被导入模块所有的顶格代码都执行一遍，遇到函数和类的定义会作申明
-解1:
-直接导入模块名，通过模块调用其中的函数
+   导入模块的实质是要将被导入模块所有的顶格代码都执行一遍，遇到函数和类的定义会作申明
+   解1:
+   直接导入模块名，通过模块调用其中的函数
+   `
+   #modeleA
+   import moduleB
+   
+   def a():
+      print 'aaaa'
+      moduleB.b()
+   
+   def c():
+      print 'cccc'
+   
+   if __name__ == "__main__":
+      a()
+      
+   
+   #moduleB
+   
+   def b():
+      print 'bbbb'
+      moduleA.c()
+   
+   `
+   解2:使用延迟导入（lazy import）在需要用的函数内部导入，或是在底部导入
+   ```python
+   #moduleB
+   def b():
+      print 'bbbbb'
+      c()
+   from moduleA import C
+   
+   #或者
+   def b():
+       from moduleA import c
+       print 'bbbb'
+       c()
+   ```
 
-解2:使用延迟导入（lazy import）在需要用的函数内部导入，或是在底部导入
-
-解法3：重新设计代码结构，将代码合并或者分离
+   解法3：重新设计代码结构，将代码合并或者分离
 
 6. 有用过with statement吗？ 它的好处是什么？
-1. with语句 其实是上下文管理器， 其内置了__enter__()方法和__exit__()方法，在with语句中，如果用as指定一个目标，会将__enter__()方法的返回值赋予这个目标。
-2. 运行中如果发生了异常，那么将会把异常的类型，值和追踪传递给__exit__()方法。如果__exit__()方法返回值为ture，则这个异常会被抑制，否则这个异常将会被重新抛出。
-3. 如果没有发生异常，也会调用__exit__()方法，但是传入的参数为None，None，通常执行文件流／会话的关闭等操作。
-在开发时， with as语句等效于try do except finally
+   1. with语句 其实是上下文管理器， 其内置了__enter__()方法和__exit__()方法，在with语句中，如果用as指定一个目标，会将__enter__()方法的返回值赋予这个目标。
+   2. 运行中如果发生了异常，那么将会把异常的类型，值和追踪传递给__exit__()方法。如果__exit__()方法返回值为ture，则这个异常会被抑制，否则这个异常将会被重新抛出。
+   3. 如果没有发生异常，也会调用__exit__()方法，但是传入的参数为None，None，通常执行文件流／会话的关闭等操作。
+   在开发时， with as语句等效于try do except finally
+   ```python
+   with open('a.txt', 'a+', encoding='utf-8') as f:
+      data = f.read()
+   
+   #等效于
+   try: 
+      f = open('a.txt')
+   except:
+      print 'fail to open'
+      exit(-1)
+   finaly:
+      f.close()
+   ```
 
 7. 对比一下dict中的items与iteritems
-dict中 items 方法作用：是将字典中的所有项，以列表的方式返回。因为字典是无序的，所以用items方法返回字典的所有项 也是没有顺序的
-字典中iteritems方法作用：与items方法作用大致相同。不iteritems返回的不是列表 而是迭代器，不占用额外的内存
-
-python3 中已经取消了iteritems属性，用items代替, 因为dict 返回的不再是列表啦 而是dict_items类 可以用for 遍历
+   dict中 items 方法作用：是将字典中的所有项，以列表的方式返回。因为字典是无序的，所以用items方法返回字典的所有项 也是没有顺序的
+   字典中iteritems方法作用：与items方法作用大致相同。不iteritems返回的不是列表 而是迭代器，不占用额外的内存
+   `
+   #python3
+   dict={'key1':'value1','key2':'value2'}
+   >>> for i,j in dict_s.items():
+   ...     print(i, j)
+   ...
+   key1 value1
+   key2 value2
+   
+   `
+   python3 中已经取消了iteritems属性，用items代替, 因为dict 返回的不再是列表啦 而是dict_items类 可以用for 遍历
 
 8. inspect模块有什么用
 1. 对是否是模块、框架、函数进行类型检查
