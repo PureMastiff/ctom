@@ -136,6 +136,7 @@ https://mp.weixin.qq.com/s?__biz=MzU2MDAyNzk5MA==&mid=2247483801&idx=1&sn=b56f02
     2. 获取源码
     3. 获取类或者函数的参数信息
     4. 解析堆栈
+
 9. 写一个类，并让它尽可能的支持操作符
     ```python
     class Array(object):
@@ -200,7 +201,7 @@ https://mp.weixin.qq.com/s?__biz=MzU2MDAyNzk5MA==&mid=2247483801&idx=1&sn=b56f02
     优缺点：
     优点：快速在进程间传递参数
     缺点：数据安全上存在风险，内存中的内容会被其他进程覆盖或更改
-    ```
+    ```python
     from multiprocessing import Process, Value
     import time
     import random
@@ -230,7 +231,7 @@ https://mp.weixin.qq.com/s?__biz=MzU2MDAyNzk5MA==&mid=2247483801&idx=1&sn=b56f02
 
     print (money.value)
     ```
-    
+
 12. 什么是lambda函数？它有什么好处？
 
 13. python读取大文件？限制内存
