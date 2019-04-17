@@ -8,6 +8,7 @@ https://www.cnblogs.com/chongdongxiaoyu/p/9054847.html
 https://mp.weixin.qq.com/s?__biz=MzU2MDAyNzk5MA==&mid=2247483801&idx=1&sn=b56f02e8e425c1f60c4fde0bb1913a1f&chksm=fc0f01a0cb7888b6ad87946efed59b372cfa6fd45c771e3a0159e5ab8380da41c99a32c4a214#rd
 
 1. 什么是GIL 谈谈你对GIL的理解？
+    
     python代码的执行是由python虚拟机（也叫解释器主循环mCPython版本）来控制，python在设计之初就考虑到在解释器的主循环中，同时只有一个线程在执行，即在任意时刻，只有一个线程在解释器中运行。对python虚拟机的访问由全局解释器锁（GIL）来控制，正是这个锁能保证同一时刻只有一个线程在运行。
    在多线程环境中，python虚拟机按以下方式执行：
       1. 设置GIL
