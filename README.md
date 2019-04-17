@@ -426,11 +426,53 @@ print (money.value)
 
 20. 有没有一个工具可以帮助查找python的bug和进行静态的代码分析
     
-    PyChecker
+    PyChecker是一个python代码的静态分析工具，它可以帮助查找python代码的bug，会对代码的复杂度和格式提出警告
+    Pylint是另外一个工具可以进行codestandard检查
 
 21. 有两个序列a,b 大小都为n， 序列元素的值是任意整数值，无序，要求：通过交换a，b中的元素，使【序列a元素的和】与【序列b元素的和】之间的差最小
 
-22. 两个整数组各有100亿条数据， 并已经排序，保存在磁盘上，内存10M
+    
+    a = [100, 99, 98, 1, 2, 3]
+
+    b = [1, 2, 30, 4, 5, 40]
+    ```python
+    def mean(sorted_list):
+        if not sorted_list:
+            return ([], [])
+        big = sorted_list[-1]
+        small = sorted_list[-2]
+        big_list, small_list = mean(sorted_list[:-2])
+
+
+        big_list.append(small)
+        small_list.append(big)
+
+
+        big_list_sum = sum(big_list)
+        small_list_sum = sum(small_list)
+
+        if big_list_sum > small_list_sum:
+            return ((big_list, small_list))
+        else:
+            return ((small_list, big_list))
+
+
+
+
+        a = [100, 99, 98, 1, 2, 3]
+
+        b = [1, 2, 30, 4, 5, 40]
+
+        b.extend(a)
+        b.sort()
+
+        b1, b2 = mean(b)
+        print(b1, b2)
+        print(sum(b1)-sum(b2))
+
+    ```
+
+22. 两个整数数组各有100亿条数据， 并已经排序，保存在磁盘上，内存10M
 问：
 （1）如何取得交集？时间和空间效率多少？python集合set（）操作方法
 （2）如果其中一个数组只有100条数据，如何优化算法取得交集？时间和空间效率分别是多少
@@ -438,13 +480,57 @@ print (money.value)
 可以用来读取某个数组的第index个元素，元素个数分别用m=100和n=10^10表示。
 
 23. 请用自己的算法， 按升序合并如下两个list，并去除重复的元素
-list1 = [2,3,8,4,9,5,6]
-list2 = [5,6,10,17,2] 
+l1 = [2,3,8,4,9,5,6]
+l2 = [5,6,10,17,2] 
+```
+l2.extend(l1)
+list(set(l2))
+>>> list1 = [2,3,8,4,9,5,6]
+>>> list2 = [5,6,10,17,2]
+>>> list2.extend(list1)
+>>> list1
+[2, 3, 8, 4, 9, 5, 6]
+>>> list2
+[5, 6, 10, 17, 2, 2, 3, 8, 4, 9, 5, 6]
+>>> set(list2)
+{2, 3, 4, 5, 6, 8, 9, 10, 17}
+>>> list(set(list2))
+[2, 3, 4, 5, 6, 8, 9, 10, 17]
+
+#方1： set()方法  返回即是有序列表
+
+#方2: 遍历去重
+list1 = [5, 6, 10, 17, 2, 2, 3, 8, 4, 9, 5, 6]
+list2 = []
+for i in list1:
+    if i not in list2:
+        list2.append(i)
+print(list2)
+
+#方3，列表推导
+list1 = [5, 6, 10, 17, 2, 2, 3, 8, 4, 9, 5, 6]
+list2 = []
+[list2.append(i) for i in list1 if not i in list2]
+
+```
 
 24. python 如何删除一个文件
-os.remove()
+
+    os.remove(path) #path是文件的路径
+    os.rmdir(path) 文件夹为空才能被删除
 
 25. python如何copy一个文件
+
+    python 复制文件方法有9种
+    * shutil copy()  copy(source_file, [destination_file or dest_dir])   类似与unix命令cp
+    * shutil copyfile()   copyfile(source_file, destination_file)
+    * shutil copyfileobj()   
+    * shutil copy2()
+    * os.popen    os.popen('cp 1.txt 2.txt')
+    * os.system
+    * threadig Thread() 方法
+    * subprocess call() 方法
+    * subprocess check_output() 方法
 
 26. python程序中输出文件如何解决  #写入log文件
 
