@@ -539,7 +539,7 @@ print (money.value)
     * subprocess call() 方法
     * subprocess check_output() 方法
 
-26. python程序中输出文件如何解决  #写入log文件
+26. python程序中文输出文件如何解决 
 
 27. 迭代器和生成器的区别
     1. 迭代器是一个更抽象的概念，任何对象，如果它的类有next方法和iter方法返回自己本身。对于string，list，dict，tuple等这类容器对象，使用for循环遍历是很方便的。在后台for语句对容器对象调用iter（）函数，iter（）是python内置函数。iter()会返回一个定义了next()方法的迭代器对象，在容器中逐个
