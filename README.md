@@ -185,6 +185,7 @@ https://mp.weixin.qq.com/s?__biz=MzU2MDAyNzk5MA==&mid=2247483801&idx=1&sn=b56f02
     ```
 
 10. python下多线程的限制以及多进程中传递参数的方式
+    
     python多线程有个全局解释器锁（GIL global interpreter lock），这个锁的意思是任一时间只能有一个线程使用解释器，和单个cpu跑多个程序，大家都是轮着使用解释器。这叫“并发”不叫“不行”
     多进程间共享数据，传递参数。可以使用 multiprocessing.Value, multiprocessing.Array
     多进程间应该避免使用共享资源。在多线程中，比较容易共享资源，比如使用全局变量或者传递参数。在多进程情况下， 由于每个进程有自己独立的内存空间，以上方法并不合适。此时我们通过共享内存和manager的方法来共享资源。但这样做提高了程序的复杂度， 并因为同步的需要而降低了效率
@@ -192,7 +193,7 @@ https://mp.weixin.qq.com/s?__biz=MzU2MDAyNzk5MA==&mid=2247483801&idx=1&sn=b56f02
 
 11.1. python是如何进行内存管理的 
     一，垃圾回收：
-    python和C++java等语言不同，他们可以不用事先声明变量类型而直接对变量进行赋值。对python语言来讲，对象的类型和内存都是在运行时确定的。这也是为什么我们称python语言为动态类型的原因（这里我们把动态类型可以简单的归结为对变量内存地址的分配是在运行时自动判断变量类型并对变量进行赋值）
+    python和C++java等语言不同，它可以不用事先声明变量类型而直接对变量进行赋值。对python语言来讲，对象的类型和内存都是在运行时确定的。这也是为什么我们称python语言为动态类型的原因（这里我们把动态类型可以简单的归结为对变量内存地址的分配是在运行时自动判断变量类型并对变量进行赋值）
     二，引用计数
     Python采用了类似windows内核对象一样的方式来进行内存管理。每一个对象，都维护这一个对指向该对对象的引用的计数。当变量被绑定在一个对象上的时候，该变量的引用计数就1，系统会自动维护这些标签，并定时扫描，当某标签的引用计数为0的时候， 该对象就会被回收。
 
@@ -361,12 +362,12 @@ print (money.value)
     ```
     
     def singleton(cls, *args, **kwargs):
-    instances = {}
-    def _singleton():
-        if cls not in instances:
-            instances[cls] = cls(*args, **kwargs)
-        return instances[cls]
-    return _singleton
+        instances = {}
+        def _singleton():
+            if cls not in instances:
+                instances[cls] = cls(*args, **kwargs)
+            return instances[cls]
+        return _singleton
 
     @singleton
     class Myclass4(object):
@@ -399,8 +400,33 @@ print (money.value)
     ```
 
 19. 如何用python来进行查询和替换一个文本字符串
+    
+    可以使用sub()方法进行查询和替换， sub方法的格式为sub(replacement, string, [count=0])
+    replacement是被替换成的文本， string为待替换的字符串， count是一个可选参数，指最大被替换的数量
+    ```python
+    import re
+
+
+    string = "blue socks and red socks"
+    p = re.compile('blue|red')
+    replace = 'colour'
+
+
+    newstring = p.sub(replace, string)
+
+    newstring1 = p.sub(replace, string, count=1)
+
+    print(newstring)
+    print(newstring1)
+
+    #执行结果
+    #colour socks and colour socks
+    #colour socks and red socks
+    ```
 
 20. 有没有一个工具可以帮助查找python的bug和进行静态的代码分析
+    
+    PyChecker
 
 21. 有两个序列a,b 大小都为n， 序列元素的值是任意整数值，无序，要求：通过交换a，b中的元素，使【序列a元素的和】与【序列b元素的和】之间的差最小
 
