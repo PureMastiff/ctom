@@ -24,6 +24,7 @@ https://mp.weixin.qq.com/s?__biz=MzU2MDAyNzk5MA==&mid=2247483801&idx=1&sn=b56f02
 2. 什么是元类？
 
 3. 说说decorator的用法和它的应用场景， 可以的话，写一个decorator
+    
     所谓装饰器就是把函数包装一下， 为函数添加一些附加功能， 不改变原函数的代码，装饰器就是一个函数，参数为被包装的函数，返回包装后的函数， 使用时使用@修饰符
     ```python
     def newfoo(func):
