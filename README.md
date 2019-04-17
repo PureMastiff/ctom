@@ -533,7 +533,7 @@ flask tornado Django
 正向代理 是一个位于客户端和原始服务器（origin server）之间的服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标（原始服务器），然后代理向原始服务器转交请求并将获得的内容返回给客户端。客户端必须要进行一些特别的设置才能使用正向代理。
 反向代理正好相反，对于客户端而言它就像原始服务器，并且客户端不需要进行任何特别的设置。客户端向反向代理的命名空间中的内容发送普通请求，接着反向代理将判断向何处（原始服务器）转交请求，并将获取的内容返回给客户端，就像这些内容原本就是它自己的一样。
 
-###网络知识
+### 网络知识
 
 1. 解释下http协议
 
@@ -541,13 +541,13 @@ flask tornado Django
 
 3. 
 
-###Linux知识：
+### Linux知识：
 
 1. 常用的linux命令
 ps, ls, mkdir, touch, cp, scp, rm, top, virt-what, help, mv, ifconfig, telnet, cat, tail, grep, find, tcpdump, awk, tar, pwd, more, su, date
 
 
-###某公司大厂：
+### 某公司大厂：
 
 1. python和redis的c语言低层实现
 
