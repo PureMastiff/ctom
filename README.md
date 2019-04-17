@@ -541,7 +541,19 @@ print (money.value)
 
 26. python程序中文输出文件如何解决 
 
+    在文件中注释中文问题，采用在文件的第一行 # coding=UTF-8
+    使用encoding 和 decoding
+    
+    例如：
+    ```python
+    name = "中国"
+    name_s = name.encoding("utf-8")
+    name_d = name_s.decode()
+    print(name_d)
+    ````
+    
 27. 迭代器和生成器的区别
+
     1. 迭代器是一个更抽象的概念，任何对象，如果它的类有next方法和iter方法返回自己本身。对于string，list，dict，tuple等这类容器对象，使用for循环遍历是很方便的。在后台for语句对容器对象调用iter（）函数，iter（）是python内置函数。iter()会返回一个定义了next()方法的迭代器对象，在容器中逐个
 访问容器元素，next()也是python的内置函数。在没有后续元素时， next()会抛出一个stopiteration异常
     2. 生成器（generator）是创建迭代器简单而强大的工具，yeild关键字。它们写起来就像正规的函数，只是在需要返回数据的时候用yeild语句。在每次next()被调用时，生成器会返回它脱离的文职。
@@ -549,7 +561,50 @@ print (money.value)
 
 28. python代码得到列表的list的交集和差集
 
+    ```
+    a = [1, 2, 3]
+    b = [2, 3, 4]
+    
+    #交集
+    c = [val for val in a if val in b]
+    print(c)
+    #[2, 3]
+    
+    #差集
+    d = [val for val in a if val not in b]
+    print(d)
+    #[1, 4]
+    
+    ```
+
 29. 写一个简单的python socket编程。  server端 client端
+
+    server端
+    ```
+    import socket
+    import sys
+    
+    def start_tcp_server(host, port):
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        server_address = (ip, port)
+        sock.bind(server_adress)
+        
+        try:
+            sock.listen(1)
+        except socket.error, e:
+           print(" fail to listen on port: {}".format(e))
+           sys.exit(1)
+        
+        while True:
+            print("waiting for connection")
+            client, addr = sock.accept()
+            client.close()
+    
+    ```
+    client端
+    ```
+    ```
+
 
 30. python如何捕获异常，如何创建自己的异常，如何传递异常try except else   try except finaly的用法 or 介绍一下python的异常处理机制和自己开发过程中的体会
 
