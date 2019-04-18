@@ -548,7 +548,7 @@ print (money.value)
     ```python
     name = "中国"
     name_s = name.encoding("utf-8")
-    name_d = name_s.decode()
+    name_d = name_s.decode('utf-8')
     print(name_d)
     ````
     
@@ -586,23 +586,39 @@ print (money.value)
     
     def start_tcp_server(host, port):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        server_address = (ip, port)
-        sock.bind(server_adress)
+        server_address = (host, port)
+        sock.bind(server_addess)
         
         try:
-            sock.listen(1)
+            sock.listen(5)
         except socket.error, e:
            print(" fail to listen on port: {}".format(e))
            sys.exit(1)
         
         while True:
             print("waiting for connection")
-            client, addr = sock.accept()
-            client.close()
+ 
+            connection, addr = sock.accept()
+            buf = connection.rece(1024)
+            if buf == '1':
+                connection.send('welcome to server!')
+            else :
+                connection.send('Please go out!')
+           
+            connection.close()
     
     ```
     client端
     ```
+    import socket
+    def start_tcp_client(host, port)
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.connect((host, port))
+        
+        sock.send("1")
+        print(sock.recv(1024)
+        sock.close()
+    
     ```
 
 
