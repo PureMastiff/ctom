@@ -719,6 +719,8 @@ print (money.value)
 
 32. 类的静态函数函数（@staticmethod），类函数(@classmethod)， 类成员函数的区别 or python类中self的含义
 
+    #http://www.cnblogs.com/Wang-Wenhui/p/8909320.html
+
 33. a=1, b=2 不用中间变量交换a和的值
     
     b,a = a,b
