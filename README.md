@@ -720,10 +720,20 @@ print (money.value)
 32. 类的静态函数函数（@staticmethod），类函数(@classmethod)， 类成员函数的区别 or python类中self的含义
 
     #http://www.cnblogs.com/Wang-Wenhui/p/8909320.html
+    静态函数（@staticmethod）:静态方法，主要处理与这个类的逻辑关联， 不可以访问实例变量或类变量的
+    类函数（@classmethod）：类方法，只能访问类变量，不能访问实例变量
+    成员函数： 实例的方法，只能通过实例进行调用，若需通过类名调用，则应申明为类方法。
+    属性函数（@property）：把一个方法通过@property变成一个静态属性
+    
+    具体应用：
+    通过类的方法（@classmethod）进行数据转换，传入参数cls
+    通过类的静态方法：进行数据验证
 
 33. a=1, b=2 不用中间变量交换a和的值
     
+    方1:
     b,a = a,b
+    
 
 35. 写一个函数，输入一个字符串，返回倒序排列的结果 如 string_reverse(‘abcdefg’)输出为gfedcba
 
