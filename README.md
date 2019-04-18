@@ -679,7 +679,7 @@ print (money.value)
 
     list 列表，有序的 ，通过索引来进行查找 使用方括号 ‘[]'
     tuple 元组， 元组将多样的对象集合到一起， 不能修改， 通过索引进行查找， 使用括号“（）“
-    dict 字典， 字典是一组键值对的组合(key,value)
+    dict 字典， 字典是一组键值对(key,value)的组合， 
 
 32. 类的静态函数函数（@staticmethod），类函数(@classmethod)， 类成员函数的区别 or python类中self的含义
 
