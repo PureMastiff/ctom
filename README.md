@@ -732,10 +732,40 @@ print (money.value)
 33. a=1, b=2 不用中间变量交换a和的值
     
     方1:
-    b,a = a,b
+    b, a = a, b
+    
+    方2:
+    a = a + b
+    b = a - b
+    a = a - b
+    
+    方3: ^ 异或运算符
+    a = a^b
+    b = a^b
+    a = a^b
     
 
 35. 写一个函数，输入一个字符串，返回倒序排列的结果 如 string_reverse(‘abcdefg’)输出为gfedcba
+    #https://www.jianshu.com/p/d282155d96e8
+    
+    #方1:使用字符串本身的翻转
+    def string_reverse(text='abcdefg')
+        return text[::-1]
+        
+    #方2:将字符串变为列表  用列表的reverse函数
+    def string_to_list(text='abcdefg')
+        new_text = list(text)
+        new_text.reverse()
+        return ''.join(new_text)
+        
+    #方3: 递归
+    def string_reverse（text='abcde'):
+        if len(text)<=1:
+            return text
+        else:
+            return string_reverse(text[1:]+text[0])
+        
+    
 
 36. 说一下下面的代码片段存在的问题
 
