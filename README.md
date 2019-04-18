@@ -634,15 +634,52 @@ print (money.value)
 
 30. python如何捕获异常，如何创建自己的异常，如何传递异常try except else   try except finaly的用法 or 介绍一下python的异常处理机制和自己开发过程中的体会
     
+    python的异常处理机制：
+    try：尝试抛出异常
+    raise：引发异常
+    except：处理异常
+    finally： 是否发生异常都是需要做的事
+    创建新的异常类， 需要继承Exception类，可以定义类的属性，便于处理异常
+    
+    开发体会：
+    异常主要用于处理读取文件，也可以使用with的方法读取文件，还可以用于网络连接， 异常可以包含大量的错误信息，进行错误处理
+    
     捕获异常，又再次触发异常， 使用raise关键字
     使用try和except语句来捕获异常
     ```
-    try
-
-    
+    try:
+        block
+    except [exception, [data ...]]:
+        block
+        
+    try:
+        block
+    except [exception, [data ...]]:
+        block
+    else:
+        block
+        
+    try:
+        block
+    except [exception, [data ...]]:
+        block
+    finaly:
+        block
+    ```
+    用raise语句传递异常或者引发一个异常：
+    ```
+    try:
+        raise MyError #自己定义一个异常
+    except MyError:
+        print('a error')
+        raise ValueError, 'invalid argument'
     ```
 
 31. 在python中 list tuple dict set有什么区别 主要应用在什么样的场景？
+
+    list 列表，有序的 ，通过索引来进行查找 使用方括号 ‘[]'
+    tuple 元组， 元组将多样的对象集合到一起， 不能修改， 通过索引进行查找， 使用括号“（）“
+    dict 字典， 字典是一组键值对的组合(key,value)
 
 32. 类的静态函数函数（@staticmethod），类函数(@classmethod)， 类成员函数的区别 or python类中self的含义
 
@@ -680,9 +717,10 @@ print (money.value)
     ```
 
         1. __init__中 用pass
-        2. 用object关键字命名实例化对象
+        2. 用object关键字命名实例化对象， object不应该被重新定义
         3. @classmethod 类函数与成员函数区分开用cls
         4. 使用new新建一个对象
+        5. 类名尽量大写
 
 37. 解释一下WSGI和FAstCGI的关系
 
