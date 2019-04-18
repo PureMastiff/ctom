@@ -583,86 +583,106 @@ print (money.value)
     ```
     import socket
     import sys
-    
+
+
     def start_tcp_server(host, port):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         server_address = (host, port)
-        sock.bind(server_addess)
-        
+        sock.bind(server_address)
+
         try:
             sock.listen(5)
-        except socket.error, e:
-           print(" fail to listen on port: {}".format(e))
-           sys.exit(1)
-        
+        except socket.error:
+            sys.exit(1)
+
         while True:
             print("waiting for connection")
- 
+
             connection, addr = sock.accept()
-            buf = connection.rece(1024)
+            buf = connection.recv(1024)
             if buf == '1':
                 connection.send('welcome to server!')
-            else :
+            else:
                 connection.send('Please go out!')
-           
+
             connection.close()
-    
+
+
+    if __name__ == '__main__':
+        start_tcp_server("127.0.0.1", 8008)
     ```
+    
     client端
     ```
     import socket
-    def start_tcp_client(host, port)
+
+
+    def start_tcp_client(host, port):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.connect((host, port))
-        
-        sock.send("1")
-        print(sock.recv(1024)
+
+        sock.send("2")
+        print(sock.recv(1024))
         sock.close()
+
+
+    if __name__ == '__main__':
+        start_tcp_client("127.0.0.1", 8008)
     
     ```
 
 
 30. python如何捕获异常，如何创建自己的异常，如何传递异常try except else   try except finaly的用法 or 介绍一下python的异常处理机制和自己开发过程中的体会
+    
+    捕获异常，又再次触发异常， 使用raise关键字
+    使用try和except语句来捕获异常
+    ```
+    try
+
+    
+    ```
 
 31. 在python中 list tuple dict set有什么区别 主要应用在什么样的场景？
 
 32. 类的静态函数函数（@staticmethod），类函数(@classmethod)， 类成员函数的区别 or python类中self的含义
 
 33. a=1, b=2 不用中间变量交换a和的值
-  b,a = a,b
+    
+    b,a = a,b
 
 35. 写一个函数，输入一个字符串，返回倒序排列的结果 如 string_reverse(‘abcdefg’)输出为gfedcba
 
 36. 说一下下面的代码片段存在的问题
-```python
-from amodule import * # amodule is an exist module  
-   
-class dummyclass(object):  
-    def __init__(self):  
-        self.is_d = True  
-        pass  
-       
-class childdummyclass(dummyclass):  
-    def __init__(self, isman):  
-        self.isman = isman  
-          
-    @classmethod  
-    def can_speak(self): return True  
-      
-    @property  
-    def man(self): return self.isman  
-       
-if __name__ == "__main__":  
-    object = new childdummyclass(True)  
-    print object.can_speak()  
-    print object.man()  
-    print object.is_d
-```
 
-    1. __init__中 用pass
-    2. 用object关键字命名实例化对象
-    3. @classmethod 类函数与成员函数区分开用cls
-    4. 使用new新建一个对象
+    ```python
+    from amodule import * # amodule is an exist module  
+
+    class dummyclass(object):  
+        def __init__(self):  
+            self.is_d = True  
+            pass  
+
+    class childdummyclass(dummyclass):  
+        def __init__(self, isman):  
+            self.isman = isman  
+
+        @classmethod  
+        def can_speak(self): return True  
+
+        @property  
+        def man(self): return self.isman  
+
+    if __name__ == "__main__":  
+        object = new childdummyclass(True)  
+        print object.can_speak()  
+        print object.man()  
+        print object.is_d
+    ```
+
+        1. __init__中 用pass
+        2. 用object关键字命名实例化对象
+        3. @classmethod 类函数与成员函数区分开用cls
+        4. 使用new新建一个对象
 
 37. 解释一下WSGI和FAstCGI的关系
 
