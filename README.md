@@ -910,16 +910,80 @@ flask tornado Django
     
     计算机不能够识别高级语言  所以当我们运行一个高级语言程序的时候， 就需要一个'翻译机'来从事把高级语言变成计算机能读懂的机器语言的过程。这个过程分为两类：第一种是编译，第二种是解释
     编译型语言在程序执行之前，先会通过编译器对程序执行一个编译的过程，把程序转变成集齐语言，运行时不需要再编译，而直接执行就可以啦，典型的就是C语言
-    解释
+    解释型语言没有这个编译过程，而是在程序运行的时候，通过解释器对程序逐行做出解释，然后直接运行 比如python
     python 是解释型的
 
-55. 现在有一个dict对象adist，里面有一百万个对象，查找其中的某个元素的平均需要多少次比较？一千万个元素呢？
+55. 现在有一个dict对象adict，里面有一百万个对象，查找其中的某个元素的平均需要多少次比较？一千万个元素呢？
+    
+    O(1) 哈希字典， 快速查找，  字典键值映射， 键唯一
 
 56. 现在有一个list对象alist，里面所有元素都是字符串，编写一个函数对它实现一个大小写无关的排序
 
-57. 有一个排好序的list对象alist 查找其中是否有某元素a（尽可能的使用标准库函数）
+    使用lambda表达式
+    ```
+    >>> words = ["I", "am", "Chinese"]
+    >>> words
+    ['I', 'am', 'Chinese']
+    >>> words.sort()
+    >>> words
+    ['Chinese', 'I', 'am']
+    >>> words.sort(key=lambda x:x.lower())
+    >>> words
+    ['am', 'Chinese', 'I']
+    >>>
+    ```
 
+57. 有一个排好序的list对象alist 查找其中是否有某元素a（尽可能的使用标准库函数）
+    
+    ```python
+    words = ["I", "am", "Chinese"]
+    try:
+        words.index('I')
+        print("find it")
+    except ValueError:
+        print('Not Found')
+        
+    >>> words.index('I')
+    2
+    >>> words.index('i')
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    ValueError: 'i' is not in list
+    ```
+    
 58. 实现一个stack
+
+    ```
+    class Stack:
+    def __init__(self):
+        self.__items = []
+
+    def isempty(self):
+        return len(self)==0
+
+    def __len__(self):
+        return len(self.__items)
+
+    def peek(self):
+        assert not self.isempty()
+        return self.__items[-1]
+
+    def push(self, value):
+        self.__items.append(value)
+
+    def pop(self):
+        assert not self.isempty()
+        return self.__items.pop()
+
+
+    s = Stack()
+    print(s.isempty())
+    s.push(1)
+    s.push(2)
+    print(s.pop())
+    print(s.pop())
+    print(s.peek())
+    ```
 
 59. 编写一个简单的ini文件解释器
 
@@ -933,10 +997,21 @@ flask tornado Django
 ### 网络知识
 
 1. 解释下http协议
+   
+   http协议是Hyper Text Transfer Protocol(超文本传输协议)的缩写，http协议和TCP/IP协议簇内的其他众多的协议相同，用于客户端和服务端之间的通信。请求访问文本或图像的等资源的一端称为客户端，而提供相应的一端称为服务端
+   
+   
 
 2. 解释下http请求头和常见的状态相应码
+    
+    常见的状态响应码：
+    1XX：指示信息-表示请求已接收，继续处理
+    2XX：成功-表示请求已被成功接收、理解、接受
+    3XX：重定向-要完成请求必须进行更进一步的操作
+    4XX：客户端错误-请求有语法错误或请求无法实现
+    5XX：服务端错误-服务器未能实现合法的请求
 
-3. 
+3. 解释一下tcp／udp协议
 
 ### Linux知识：
 
