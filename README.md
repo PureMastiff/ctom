@@ -48,6 +48,7 @@ https://mp.weixin.qq.com/s?__biz=MzU2MDAyNzk5MA==&mid=2247483801&idx=1&sn=b56f02
     ```
 
 4. 为什么要用函数装饰器？请举例
+
    装饰器的作用和功能：
    1. 引入日志
    2. 函数进行时间统计
@@ -57,6 +58,7 @@ https://mp.weixin.qq.com/s?__biz=MzU2MDAyNzk5MA==&mid=2247483801&idx=1&sn=b56f02
    6. 缓存
 
 5. 是否遇到过python模块间循环引用的问题，如何避免它？
+
    导入模块的实质是要将被导入模块所有的顶格代码都执行一遍，遇到函数和类的定义会作申明
    解1:
    直接导入模块名，通过模块调用其中的函数
@@ -100,6 +102,7 @@ https://mp.weixin.qq.com/s?__biz=MzU2MDAyNzk5MA==&mid=2247483801&idx=1&sn=b56f02
    解法3：重新设计代码结构，将代码合并或者分离
 
 6. 有用过with statement吗？ 它的好处是什么？
+
    1. with语句 其实是上下文管理器， 其内置了__enter__()方法和__exit__()方法，在with语句中，如果用as指定一个目标，会将__enter__()方法的返回值赋予这个目标。
    2. 运行中如果发生了异常，那么将会把异常的类型，值和追踪传递给__exit__()方法。如果__exit__()方法返回值为ture，则这个异常会被抑制，否则这个异常将会被重新抛出。
    3. 如果没有发生异常，也会调用__exit__()方法，但是传入的参数为None，None，通常执行文件流／会话的关闭等操作。
@@ -119,6 +122,7 @@ https://mp.weixin.qq.com/s?__biz=MzU2MDAyNzk5MA==&mid=2247483801&idx=1&sn=b56f02
    ```
 
 7. 对比一下dict中的items与iteritems
+
    dict中 items 方法作用：是将字典中的所有项，以列表的方式返回。因为字典是无序的，所以用items方法返回字典的所有项 也是没有顺序的
    字典中iteritems方法作用：与items方法作用大致相同。不iteritems返回的不是列表 而是迭代器，不占用额外的内存
    ```
@@ -134,12 +138,14 @@ https://mp.weixin.qq.com/s?__biz=MzU2MDAyNzk5MA==&mid=2247483801&idx=1&sn=b56f02
    python3 中已经取消了iteritems属性，用items代替, 因为dict 返回的不再是列表啦 而是dict_items类 可以用for 遍历
 
 8. inspect模块有什么用
+
     1. 对是否是模块、框架、函数进行类型检查
     2. 获取源码
     3. 获取类或者函数的参数信息
     4. 解析堆栈
 
 9. 写一个类，并让它尽可能的支持操作符
+
     ```python
     class Array(object):
         __list = []
@@ -239,6 +245,7 @@ print (money.value)
  ```
 
 12. 什么是lambda函数？它有什么好处？
+
     lamba函数一个可以接收一个或者多个参数（包括可选参数）并且返回单个表达式值的函数。（lambda函数不能包含命令，它所包含的表达式不能超过一个）
     lambda函数返回的是一个匿名函数
 
@@ -802,12 +809,6 @@ print (money.value)
 
 37. 解释一下WSGI和FAstCGI的关系
 
-
-
-
-
-
-
 38. 解释一下Django和torando关系， 差别
 
 39. 解释一下Django使用redis缓存服务器
@@ -816,9 +817,15 @@ print (money.value)
 
 41. 分别简述OO，OOA
 
+    OO: object-oriented,面向对象，基于对象的概念，以对象为中心，以类和继承为构造机制，来认识，理解，刻画客观世界和设计，构建相应的软件系统的一种方法， 本意是模拟人类的思维方法   使开发维护修改更加容易
+    OOA：object-oriented-analysis 面向对象分析，强调的是系统调查资料的基础上，针对OO方法所需的素材进行的归类分析和整理，不是对管理业务现状和方法的分析，其实就是进一步对OO进行细化，初步得出OO的方法，或者理解为：在得出的文档中对接口进行粗略定义
+    OOD：object-oriented-design, 面向对象设计，主要作为是对ooA分析的结果进一步的规范和整理，以便能够被OOP直接接受--整理和定义OO的属性和方法
+    OOP：object-oriented-progarmming 把组件的实现和接口分开，并且让组件具有多态性--（抽象 封装 继承 多态）面向接口编程
+
 42. 简述正则表达式中？p的含义
 
 43. 请写出python的常用内置函数（至少3个），并描述它们的具体含义
+    
 
 44. 可以用python进行post数据提交，可以加载什么模块进行操作？在操作之前需要对数据进行什么操作？
 
