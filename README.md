@@ -825,9 +825,28 @@ print (money.value)
 42. 简述正则表达式中？p的含义
 
 43. 请写出python的常用内置函数（至少3个），并描述它们的具体含义
-    
+
+    abs() 求绝对值
+    all() 判断元素中所有元素是否为真值
+    any() 判断元素中是否有元素为真
+    next(）返回可迭代对象的下一个值
+    int(), str(), list(), tuple(), dict(), set()
+    enumerate() 根据可迭代对象创建枚举对象
+    range() 根据传入的参数创建一个新的range对象
+    slice() 进行切片函数
+    sorted() 进行排序
+    isintance() 判断是否int类型 是返回True
+    zip() 聚合传入的每个迭代器中相同位置的元素，返回一个新的元组类型迭代器
+    help(), dir(), id(）， type()
+    format() 格式化显示值
+    getattr() 获得对象的属性值
+    setattr() 设置对象的属性值
+    ...
 
 44. 可以用python进行post数据提交，可以加载什么模块进行操作？在操作之前需要对数据进行什么操作？
+
+    requests模块
+    对数据进行json格式化
 
 45. 说出python中间件 Sqlalchemy的具体申明方式？以及模块与mysqldb之间的区别？
 
