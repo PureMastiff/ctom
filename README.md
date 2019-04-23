@@ -993,7 +993,46 @@ flask tornado Django
 
     正向代理 是一个位于客户端和原始服务器（origin server）之间的服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标（原始服务器），然后代理向原始服务器转交请求并将获得的内容返回给客户端。客户端必须要进行一些特别的设置才能使用正向代理。
     反向代理正好相反，对于客户端而言它就像原始服务器，并且客户端不需要进行任何特别的设置。客户端向反向代理的命名空间中的内容发送普通请求，接着反向代理将判断向何处（原始服务器）转交请求，并将获取的内容返回给客户端，就像这些内容原本就是它自己的一样。
+     
+62. python is 和 ==的区别
 
+    is 是判读两个对象标识符是否相等 对象的id（是否相等）
+    == 判读两个对象的值是否相等
+    ```
+    a = 'hello'
+    b = 'hello' 
+    a is b True
+    a == b True
+    a = 'hel lo'
+    b = 'hel lo'
+    a is b False
+    a == b True
+    ```
+    当对象中只含有字母含大小写，数字，下划线时 python会维护一张字典使这些字符串全局唯一，也就是intern机制
+    
+63. 闭包
+
+    闭包可以实现先将一个参数传递给一个函数，而并不立即执行，以达到延迟求值的目的。满足以下三个条件：
+    1. 必须有一个内嵌函数
+    2. 内嵌函数必须引用外部函数中变量
+    3. 外部函数返回值必须是内嵌函数
+    ```
+    def delay_fun(x, y):
+        def caculator():
+            return x+y
+        return caculator
+        
+    msum = delay_fun(2, 3) 
+    print(msum())
+     
+    ```
+
+64. \*args和\*\*kwargs
+    
+    这两个都是python的可变参数，用于接受参数的传递。\*args表示任何多个无名参数，它是一个元组，\*\*kwargs表示关键字参数，它是一个字典。同时使用这两个参数时， args必须在kwargs前面
+    
+    
+    
 ### 网络知识
 
 1. 解释下http协议
@@ -1051,8 +1090,6 @@ flask tornado Django
     为啥tcp是安全的
     建立连接时 ： tcp的三次握手 四次分手
     
-    
-    
 
 ### Linux知识：
 
@@ -1067,3 +1104,78 @@ ps, ls, mkdir, touch, cp, scp, rm, top, virt-what, help, mv, ifconfig, telnet, c
 2. 有一个数组，里面只有一个值是唯一的， 其余都是重复成对出现的。请设计一个算法，在o1的空间复杂度和on的时间复杂度内，找出这个值
 
 3. 请实现二叉树的广度遍历
+
+### 数据库 
+
+    1. 登录数据库  mysql -u root -p
+    2. 查看数据库中的所有库
+        show databases;
+        mysql> show databases;
+        +--------------------+
+        | Database           |
+        +--------------------+
+        | information_schema |
+        | mysql              |  
+        | performance_schema |
+        | profile            |
+        | sys                |
+        +--------------------+
+    3. 进入profile数据库
+        mysql> use profile;
+        Reading table information for completion of table and column names
+        You can turn off this feature to get a quicker startup with -A
+
+        Database changed
+        #查看数据库中的所有表
+        show tables;
+        mysql> show tables;
+        +-------------------+
+        | Tables_in_profile |
+        +-------------------+
+        | name              |
+        +-------------------+
+        1 row in set (0.00 sec)
+
+        # 重命名表名
+        mysql> rename table name to students;
+        Query OK, 0 rows affected (0.03 sec)
+
+        mysql> show tables;
+        +-------------------+
+        | Tables_in_profile |
+        +-------------------+
+        | students          |
+        +-------------------+
+        1 row in set (0.00 sec)
+        #查看表的结构 desc students;
+        mysql> desc students;
+        +-------+---------+------+-----+---------+----------------+
+        | Field | Type    | Null | Key | Default | Extra          |
+        +-------+---------+------+-----+---------+----------------+
+        | id    | int(3)  | NO   | PRI | NULL    | auto_increment |
+        | xm    | char(8) | YES  |     | NULL    |                |
+        | xb    | char(2) | YES  |     | NULL    |                |
+        | csny  | date    | YES  |     | NULL    |                |
+        +-------+---------+------+-----+---------+----------------+
+        #查看表中所有的内容 select * from students;
+        mysql> select * from students;
+        +----+--------+------+------------+
+        | id | xm     | xb   | csny       |
+        +----+--------+------+------------+
+        |  1 | guogx  | M    | 1990-06-06 |
+        |  2 | Lina   | W    | 2001-07-28 |
+        |  4 | ee     | W    | 2018-08-09 |
+        |  5 | diudiu | z    | 2018-08-09 |
+        |  6 | ff     | W    | 1933-02-01 |
+        +----+--------+------+------------+
+        5 rows in set (0.00 sec)
+
+        # 带条件查找
+        mysql> select * from students where xm='guogx';
+        +----+-------+------+------------+
+        | id | xm    | xb   | csny       |
+        +----+-------+------+------------+
+        |  1 | guogx | M    | 1990-06-06 |
+        +----+-------+------+------------+
+        1 row in set (0.00 sec)
+        
