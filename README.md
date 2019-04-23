@@ -1005,6 +1005,14 @@ flask tornado Django
 2. 解释下http请求头和常见的状态相应码
     
     请求方法
+    HTTP1.0 定义了三种请求方法：GET POST HEAD方法
+    HTTP1.1 新增了五种请求方法：OPTIONS PUT DELETE TRACE 和 CONNECT方法
+    GET：用于请求访问已经被URL（统一资源标识符）识别的资源，可以通过URL传参给服务器
+    POST：用于传输信息给服务器，主要功能与get方法类似，但是一般推荐post方法
+    PUT：传输文件，报文主体中包含文件内容，保存到相应URL位置
+    HEAD：获取报文首部，与get方法类似，只是返回的不是报文主体，一般用于验证URL是否有效
+    DELETE：删除文件，与put方法相反，删除对应URL位置的文件
+    OPRTIONS：查询相应URL支持的Http方法
     
 
     常见的状态响应码：
@@ -1014,6 +1022,8 @@ flask tornado Django
     * 4XX：客户端错误-请求有语法错误或请求无法实现
     * 5XX：服务端错误-服务器未能实现合法的请求
 
+    
+    
 3. 解释一下tcp／udp协议
 
 ### Linux知识：
