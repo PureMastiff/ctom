@@ -1179,3 +1179,7 @@ ps, ls, mkdir, touch, cp, scp, rm, top, virt-what, help, mv, ifconfig, telnet, c
         +----+-------+------+------------+
         1 row in set (0.00 sec)
         
+        # 增加表中的内容
+        # 修改表中的内容
+        # 删除表中的内容
+       
