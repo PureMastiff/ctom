@@ -1031,7 +1031,61 @@ flask tornado Django
     
     这两个都是python的可变参数，用于接受参数的传递。\*args表示任何多个无名参数，它是一个元组，\*\*kwargs表示关键字参数，它是一个字典。同时使用这两个参数时， args必须在kwargs前面
     
-65. 
+65. python中断言方法举例
+    
+    assert()方法，断言成功， 程序继续执行，断言失败，则程序报错抛出异常
+    ```
+    a = 3
+    assert (a>2)
+    print('ddddd')
+
+    b = 5
+
+    assert (a>6)
+    print('pppppp')
+    
+    #执行结果
+    ddddd
+    Traceback (most recent call last):
+      File "test.py", line 7, in <module>
+        assert (a>6)
+    AssertionError
+    guogx@guogxdeMacBook-Pro:~/git/Bee/obt% python test.py
+    ddddd
+    Traceback (most recent call last):
+      File "test.py", line 7, in <module>
+        assert (a>6)
+    AssertionError
+
+    ```
+        
+66. 提高python运行效率的方法
+    
+    1. 使用生成器，因为可以节约大量内存
+    2. 循环代码优化， 避免过多重复代码的执行
+    3. 核心模块采用cpython pypy等，提供效率
+    4. 多进程，多线程，协程
+    5. 多个if elif条件判断，可以把最有可能发生的条件放到前面写，这样可以减少判断的次数，提高效率
+
+67. 简述redis 和 mysql的区别
+    
+    redis：内存型 非关系数据库，数据保存在内存中，速度快
+    mysql：关系型数据库 数据保存在硬盘中， 检索的话 会有一定的IO操作 访问速度相对慢
+    
+68. 简述下 cookie和session的区别
+    
+    1. session在服务端，cookie在客户端
+    2. session的运行依赖session id 而sessionid在cookie中，也就是说，如果浏览器禁用了cookie 同时session也会失效，存储session时，键与cookie中的sessionid相同，值是开发人员设置的键值对信息，进行lbase64编码， 过期时间由开发人员设置
+    3. cookie的安全型比session差
+
+69. python中什么元素为假？
+    0 空字符串 空列表 空字典 空元组 None False
+ 
+70. 简述乐观锁和悲观锁
+    https://zhuanlan.zhihu.com/p/54430650
+    悲观锁，就是很悲观，每次去拿数据的时候都认为别人会修改，所以每次拿数据的时候都会上锁，这样别人想拿这个数据就会block直到它拿到锁。传统的关系型数据库里边就用到了很多这种锁机制，比如行锁，表锁等 读锁 写锁等 都是在操作之前上锁
+    乐观锁，就是很乐观，每次去拿数据的时候都认为别人不会修改，所以不会上锁，但是在更新的时候会判断一下在次期间别人有没有去更新这个数据，可以使用版本好机制，乐观锁适用于多读的应用类型，这样可以提高吞吐量。
+
     
 ### 算法
 
@@ -1054,6 +1108,7 @@ flask tornado Django
     [-65, -1, 0, 2, 3, 5, 6, 9, 12, 78]
 
     ```
+    
 
 
 
