@@ -1022,9 +1022,19 @@ flask tornado Django
     * 4XX：客户端错误-请求有语法错误或请求无法实现
     * 5XX：服务端错误-服务器未能实现合法的请求
 
-    
+    * 200 OK 客户段请求成功
+    * 301 永久重定向
+    * 302 临时性重定向
+    * 400 bad request
+    * 401 Unauthorized
+    * 403 Forbidden
+    * 404 Not Found
+    * 500 Internal Server Error
+    * 503 Server Unavailable
     
 3. 解释一下tcp／udp协议
+    
+    
 
 ### Linux知识：
 
