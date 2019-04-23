@@ -1031,8 +1031,11 @@ flask tornado Django
     
     这两个都是python的可变参数，用于接受参数的传递。\*args表示任何多个无名参数，它是一个元组，\*\*kwargs表示关键字参数，它是一个字典。同时使用这两个参数时， args必须在kwargs前面
     
-    
-    
+### 算法
+1. 快排
+
+
+
 ### 网络知识
 
 1. 解释下http协议
@@ -1106,8 +1109,72 @@ ps, ls, mkdir, touch, cp, scp, rm, top, virt-what, help, mv, ifconfig, telnet, c
 3. 请实现二叉树的广度遍历
 
 ### 数据库 
+    
+    MYSQL基本语法
+    1. 增加：创建数据库表
+        use database
+        create table test(id int(2), name varchar(20))
+    2. 删
+        alter table 表名(test) drop s属性名(int); #删除字段
+        drop table 表名(test); #删除表
+    3. 改
+        alter table 旧表名 rename 新表名; #修改表，名
+        alter table 表名 modify   属性名 数据类型; #修改字段数据类型
+    4. 查
+        select * from 表名;
+        select * from 表名 where id=1; 条件查询
+        select * from 表名 where 字段名 between 条件1 and 条件2； 范围查询
+        select count(*) from 表名；#查询表共有多少条记录
+    5. 触发器
+        是由insert，update，delete等事件来触发某种特定操作，满足触发条件时，数据库系统会执行触发器中定义的语句，这样可以保证某些操作之间的一致性
+    
+    登录数据库  mysql -u root -p
+    1. 数据库操作：
+        #新建一个数据库 
+        mysql> create database company charset=utf8;
+        Query OK, 1 row affected (0.02 sec)
+        
+        mysql> show databases;
+        +--------------------+
+        | Database           |
+        +--------------------+
+        | information_schema |
+        | company            |
+        | mysql              |
+        | performance_schema |
+        | profile            |
+        | sys                |
+        +--------------------+
+        6 rows in set (0.00 sec)
 
-    1. 登录数据库  mysql -u root -p
+        mysql> use company;
+        Database changed
+        # 
+        mysql> create table yuangong(name varchar(20), id int(4));
+        Query OK, 0 rows affected (0.00 sec)
+
+        mysql> show tables;
+        +-------------------+
+        | Tables_in_company |
+        +-------------------+
+        | yuangong          |
+        +-------------------+
+        
+        #删除数据库
+        mysql> drop database company;
+        Query OK, 1 row affected (0.02 sec)
+
+        mysql> show databases;
+        +--------------------+
+        | Database           |
+        +--------------------+
+        | information_schema |
+        | mysql              |
+        | performance_schema |
+        | profile            |
+        | sys                |
+        +--------------------+
+        
     2. 查看数据库中的所有库
         show databases;
         mysql> show databases;
@@ -1180,6 +1247,79 @@ ps, ls, mkdir, touch, cp, scp, rm, top, virt-what, help, mv, ifconfig, telnet, c
         1 row in set (0.00 sec)
         
         # 增加表中的内容
+        mysql> insert into students values(100, 'zhuzhu', 'W', '2019.01.01');
+        Query OK, 1 row affected (0.00 sec)
+
+        mysql> select * from students;
+        +-----+--------+------+------------+
+        | id  | xm     | xb   | csny       |
+        +-----+--------+------+------------+
+        |   1 | guogx  | M    | 1990-06-06 |
+        |   2 | Lina   | W    | 2001-07-28 |
+        |   4 | ee     | W    | 2018-08-09 |
+        |   5 | diudiu | z    | 2018-08-09 |
+        |   6 | ff     | W    | 1933-02-01 |
+        | 100 | zhuzhu | W    | 2019-01-01 |
+        +-----+--------+------+------------+
         # 修改表中的内容
+        mysql> update students set xm='mimi',xb='x' where id=6;
+        Query OK, 1 row affected (0.00 sec)
+        Rows matched: 1  Changed: 1  Warnings: 0
+
+        mysql> select * from students;
+        +-----+--------+------+------------+
+        | id  | xm     | xb   | csny       |
+        +-----+--------+------+------------+
+        |   1 | guogx  | M    | 1990-06-06 |
+        |   2 | Lina   | W    | 2001-07-28 |
+        |   4 | ee     | W    | 2018-08-09 |
+        |   5 | diudiu | z    | 2018-08-09 |
+        |   6 | mimi   | x    | 1933-02-01 |
+        | 100 | zhuzhu | W    | 2019-01-01 |
+        +-----+--------+------+------------+
         # 删除表中的内容
+        mysql> delete from students where id=4;
+        Query OK, 1 row affected (0.00 sec)
+
+        mysql> select * from students;
+        +-----+--------+------+------------+
+        | id  | xm     | xb   | csny       |
+        +-----+--------+------+------------+
+        |   1 | guogx  | M    | 1990-06-06 |
+        |   2 | Lina   | W    | 2001-07-28 |
+        |   5 | diudiu | z    | 2018-08-09 |
+        |   6 | mimi   | x    | 1933-02-01 |
+        | 100 | zhuzhu | W    | 2019-01-01 |
+        +-----+--------+------+------------+
        
+       # 新建数据库表
+        mysql> create table flowers(name varchar(20), color int(1));
+        Query OK, 0 rows affected (0.01 sec)
+
+        mysql> show tables;
+        +-------------------+
+        | Tables_in_profile |
+        +-------------------+
+        | flowers           |
+        | students          |
+        +-------------------+
+        2 rows in set (0.00 sec)
+
+        mysql> desc flowers;
+        +-------+-------------+------+-----+---------+-------+
+        | Field | Type        | Null | Key | Default | Extra |
+        +-------+-------------+------+-----+---------+-------+
+        | name  | varchar(20) | YES  |     | NULL    |       |
+        | color | int(1)      | YES  |     | NULL    |       |
+        +-------+-------------+------+-----+---------+-------+
+        
+        # 删除数据库表 drop table 表名
+        mysql> drop table flowers;
+        Query OK, 0 rows affected (0.02 sec)
+        
+        mysql> show tables;
+        +-------------------+
+        | Tables_in_profile |
+        +-------------------+
+        | students          |
+        +-------------------+
