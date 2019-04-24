@@ -267,7 +267,31 @@ print (money.value)
 
 13. python读取大文件？限制内存
 （1）. 利用生成器generator
+
+    也就是分块读取思想
+    ```
+
+    filepath = '/Users/guogx/Downloads/local-monitor/collector.log'
+
+    def read_in_chunks(filepath, chunk_size=1024*10):
+        f = open(filepath)
+        while True:
+            chunk_data = f.read(chunk_size)
+            if not chunk_data:
+                break
+            yield chunk_data
+
+    if __name__ == '__main__':
+        chunks = read_in_chunks(filepath)
+        for chunk in chunks:
+            print(chunk)
+    ```
 （2）迭代器进行遍历： for line in file
+    
+（3）  使用 with语句打开和关闭文件，包括抛出一个内部快异常。 for line in f文件对象f视为一个迭代器，会自动的采用缓存IO和内存管理，所以不必担心大文件
+    with open(bigfile.txt) as f:
+        for line in f:
+            print(line)
 
 14. 如何用python输出一个Fibonacci数列？
 
