@@ -23,6 +23,8 @@ https://mp.weixin.qq.com/s?__biz=MzU2MDAyNzk5MA==&mid=2247483801&idx=1&sn=b56f02
    
 2. 什么是元类？
 
+    元类创建对象 是类的类， type函数实际上就是一个元类
+
 3. 说说decorator的用法和它的应用场景， 可以的话，写一个decorator
     
     所谓装饰器就是把函数包装一下， 为函数添加一些附加功能， 不改变原函数的代码，装饰器就是一个函数，参数为被包装的函数，返回包装后的函数， 使用时使用@修饰符
@@ -585,8 +587,7 @@ print (money.value)
     
 27. 迭代器和生成器的区别
 
-    1. 迭代器是一个更抽象的概念，任何对象，如果它的类有next方法和iter方法返回自己本身。对于string，list，dict，tuple等这类容器对象，使用for循环遍历是很方便的。在后台for语句对容器对象调用iter（）函数，iter（）是python内置函数。iter()会返回一个定义了next()方法的迭代器对象，在容器中逐个
-访问容器元素，next()也是python的内置函数。在没有后续元素时， next()会抛出一个stopiteration异常
+    1. 迭代器是一个更抽象的概念，任何对象，如果它的类有next方法和iter方法返回自己本身。对于string，list，dict，tuple等这类容器对象，使用for循环遍历是很方便的。在后台for语句对容器对象调用iter（）函数，iter（）是python内置函数。iter()会返回一个定义了next()方法的迭代器对象，在容器中逐个访问容器元素，next()也是python的内置函数。在没有后续元素时， next()会抛出一个stopiteration异常
     2. 生成器（generator）是创建迭代器简单而强大的工具，yeild关键字。它们写起来就像正规的函数，只是在需要返回数据的时候用yeild语句。在每次next()被调用时，生成器会返回它脱离的文职。
     区别：生成器能做到迭代器能做的所有事，而且因为自动创建了_iter__()和next()方法， 生成器显得特别简洁，而且生成器是高效的，使用生成器取代列表解析可以同时节省内存，除了创建和保存程序状态的自动方法，当发生器终结时，还会自动抛出stopiteration异常
 
@@ -870,7 +871,7 @@ print (money.value)
 44. 可以用python进行post数据提交，可以加载什么模块进行操作？在操作之前需要对数据进行什么操作？
 
     requests模块
-    对数据进行json格式化
+    对数据进行json格式化 json.dump
 
 45. 说出python中间件 Sqlalchemy的具体申明方式？以及模块与mysqldb之间的区别？
 
@@ -1117,13 +1118,13 @@ flask tornado Django
 
     ```
     def qsort(seq):
-    if seq==[]:
-        return []
-    else:
-        pivot=seq[0]
-        lesser = qsort([x for x in seq[1:] if x < pivot])
-        greater = qsort([x for x in seq[1:] if x >= pivot])
-    return lesser+[pivot]+greater
+        if seq==[]:
+            return []
+        else:
+            pivot=seq[0]
+            lesser = qsort([x for x in seq[1:] if x < pivot])
+            greater = qsort([x for x in seq[1:] if x >= pivot])
+        return lesser+[pivot]+greater
 
     seq = [5,6,78,9,0,-1,2,3,-65,12]
     print(qsort(seq))
@@ -1205,6 +1206,21 @@ ps, ls, mkdir, touch, cp, scp, rm, top, virt-what, help, mv, ifconfig, telnet, c
 1. python和redis的c语言低层实现
 
 2. 有一个数组，里面只有一个值是唯一的， 其余都是重复成对出现的。请设计一个算法，在o1的空间复杂度和on的时间复杂度内，找出这个值
+    
+    ```
+    x = [1, 2, 3, 4, 5, 4, 3, 2, 1, 5, 33333]
+
+    num = len(x)
+
+    a = 0
+    for i in range(num):
+        a ^= x[i]
+
+    print(a)
+    
+    # result:
+    33333
+    ```
 
 3. 请实现二叉树的广度遍历
 
