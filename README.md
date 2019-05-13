@@ -194,7 +194,7 @@ https://mp.weixin.qq.com/s?__biz=MzU2MDAyNzk5MA==&mid=2247483801&idx=1&sn=b56f02
 
 10. python下多线程的限制以及多进程中传递参数的方式
     
-    python多线程有个全局解释器锁（GIL global interpreter lock），这个锁的意思是任一时间只能有一个线程使用解释器，和单个cpu跑多个程序，大家都是轮着使用解释器。这叫“并发”不叫“不行”
+    python多线程有个全局解释器锁（GIL global interpreter lock），这个锁的意思是任一时间只能有一个线程使用解释器，和单个cpu跑多个程序，大家都是轮着使用解释器。这叫“并发”不叫“并行”
     多进程间共享数据，传递参数。可以使用 multiprocessing.Value, multiprocessing.Array
     多进程间应该避免使用共享资源。在多线程中，比较容易共享资源，比如使用全局变量或者传递参数。在多进程情况下， 由于每个进程有自己独立的内存空间，以上方法并不合适。此时我们通过共享内存和manager的方法来共享资源。但这样做提高了程序的复杂度， 并因为同步的需要而降低了效率
 
