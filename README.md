@@ -290,10 +290,12 @@ print (money.value)
     ```
 （2）迭代器进行遍历： for line in file
     
-（3）  使用 with语句打开和关闭文件，包括抛出一个内部快异常。 for line in f文件对象f视为一个迭代器，会自动的采用缓存IO和内存管理，所以不必担心大文件
+（3）使用 with语句打开和关闭文件，包括抛出一个内部快异常。 for line in f文件对象f视为一个迭代器，会自动的采用缓存IO和内存管理，所以不必担心大文件
+```
     with open(bigfile.txt) as f:
         for line in f:
             print(line)
+```
 
 14. 如何用python输出一个Fibonacci数列？
 
