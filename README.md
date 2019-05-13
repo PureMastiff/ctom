@@ -255,7 +255,7 @@ print (money.value)
     1. lambda函数比较轻便，即用即扔，很适合需要完成某一项简单功能，但是这个简单的功能只能在此一处使用。
     2. lambda是匿名函数，一般用来给filter，map，reduce这样的函数式编程服务
     3. 作为回调函数，可以传递给某些应用， 比如消息处理等
-    ```
+    ```python
     >>> g = lambda x: x*2
     >>> g(5)
     10
@@ -271,7 +271,7 @@ print (money.value)
 （1）. 利用生成器generator
 
     也就是分块读取思想
-    ```
+    ```python
 
     filepath = '/Users/guogx/Downloads/local-monitor/collector.log'
 
@@ -291,7 +291,7 @@ print (money.value)
 （2）迭代器进行遍历： for line in file
     
 （3）使用 with语句打开和关闭文件，包括抛出一个内部快异常。 for line in f文件对象f视为一个迭代器，会自动的采用缓存IO和内存管理，所以不必担心大文件
-```
+```python
     with open(bigfile.txt) as f:
         for line in f:
             print(line)
@@ -299,7 +299,7 @@ print (money.value)
 
 14. 如何用python输出一个Fibonacci数列？
 
-    ```
+    ```python
     >>> a,b = 0,1
     >>> while b<100:
     ...     print(b)
@@ -322,7 +322,7 @@ print (money.value)
 
 16. 解释一下python的and-or语法
 
-    ```
+    ```python
     >>> a = "first"
     >>> b = "second"
     >>> 1 and a or b
@@ -400,7 +400,7 @@ print (money.value)
     方2:使用装饰器（decorator）, 这是一种更pythonic的方法
     单利类本身不知道自己是单例的 因为它本身（自己的代码）并不是单例的
     
-    ```
+    ```python
     
     def singleton(cls, *args, **kwargs):
         instances = {}
@@ -527,7 +527,7 @@ print (money.value)
 
     l1 = [2,3,8,4,9,5,6]
     l2 = [5,6,10,17,2] 
-    ```
+    ```python
     l2.extend(l1)
     list(set(l2))
     >>> list1 = [2,3,8,4,9,5,6]
@@ -598,7 +598,7 @@ print (money.value)
 
 28. python代码得到列表的list的交集和差集
 
-    ```
+    ```python
     a = [1, 2, 3]
     b = [2, 3, 4]
     
@@ -617,7 +617,7 @@ print (money.value)
 29. 写一个简单的python socket编程。  server端 client端
 
     server端
-    ```
+    ```python
     import socket
     import sys
 
@@ -650,7 +650,7 @@ print (money.value)
     ```
     
     client端
-    ```
+    ```python
     import socket
 
 
@@ -683,7 +683,7 @@ print (money.value)
     
     捕获异常，又再次触发异常， 使用raise关键字
     使用try和except语句来捕获异常
-    ```
+    ```python
     try:
         block
     except [exception, [data ...]]:
@@ -704,7 +704,7 @@ print (money.value)
         block
     ```
     用raise语句传递异常或者引发一个异常：
-    ```
+    ```python
     try:
         raise MyError #自己定义一个异常
     except MyError:
@@ -725,7 +725,7 @@ print (money.value)
     dict 使用键和值进行关联的数据
     set 数据只出现一次 只关系数据是否出现  不关心其位置
     
-    ```
+    ```python
     >>> a = [1, 2, 3]
     >>> a[0]
     1
@@ -950,7 +950,7 @@ flask tornado Django
 56. 现在有一个list对象alist，里面所有元素都是字符串，编写一个函数对它实现一个大小写无关的排序
 
     使用lambda表达式
-    ```
+    ```python
     >>> words = ["I", "am", "Chinese"]
     >>> words
     ['I', 'am', 'Chinese']
@@ -983,7 +983,7 @@ flask tornado Django
     
 58. 实现一个stack
 
-    ```
+    ```python
     class Stack:
     def __init__(self):
         self.__items = []
@@ -1028,7 +1028,7 @@ flask tornado Django
 
     is 是判读两个对象标识符是否相等 对象的id（是否相等）
     == 判读两个对象的值是否相等
-    ```
+    ```python
     a = 'hello'
     b = 'hello' 
     a is b True
@@ -1064,7 +1064,7 @@ flask tornado Django
 65. python中断言方法举例
     
     assert()方法，断言成功， 程序继续执行，断言失败，则程序报错抛出异常
-    ```
+    ```python
     a = 3
     assert (a>2)
     print('ddddd')
@@ -1121,7 +1121,7 @@ flask tornado Django
 
 1. 快排
 
-    ```
+    ```python
     def qsort(seq):
         if seq==[]:
             return []
