@@ -7,6 +7,16 @@
 5. 看的相关书 哪本更深刻
 6. 技术中的难点
 7. strcpy函数实现
+```C++
+char *strcpy(char *dst, const char *src)
+{
+    assert(dst != null && src != null);
+    char *ret = dst;
+    while((*dst++ == *src++) != '\0');
+    return ret;
+}
+
+```
 
 
 图像：
