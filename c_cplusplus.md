@@ -10,14 +10,18 @@
 ```C++
 char *strcpy(char *dst, const char *src)
 {
-    assert(dst != null && src != null);
+    assert(dst != NULL && src != NULL);
     char *ret = dst;
     while((*dst++ == *src++) != '\0');
     return ret;
 }
 
 ```
-
+8. bool, int ,float, double变量与0值的比较
+bool型：if(!flag) 或者 if flag falg为bool型
+int型：if(value == 0)  if(value !=0)
+float型： if(abs(a -b) <= epsilon) epsilon为精度   同理可以与0比较
+pointer型L： if (p == NULL) if(P != NULL)
 
 图像：
 1. 直方图函数（代码）
