@@ -1138,10 +1138,71 @@ flask tornado Django
     [-65, -1, 0, 2, 3, 5, 6, 9, 12, 78]
 
     ```
-   
-2. 归并排序
+2. 插入排序
+   ```
+   seq = [12, 23, 1, 23, 34, 4]
+
+    # https://www.cnblogs.com/cookie1026/p/6115925.html
+    def insert_sort(seq):
+        length = len(seq)
+
+        for i in range(1,length):
+            k = seq[i]
+            j = i - 1
+            while j >= 0:
+                if seq[j] > k:
+                    seq[j+1] = seq[j]
+                    seq[j] = k
+                j = j - 1
+        return seq
+
+
+    if __name__ == '__main__':
+        insert_sort(seq)
+   ```
+
 3. 冒泡排序
-4. 二分查找法
+
+    ```
+    seq = [12, 23, 1, 23, 34, 4]
+
+    def bubble_sort(seq):
+        length = len(seq)
+        for i in range(0, length):
+            for j in range(i+1, length):
+                if seq[i] > seq[j]:
+                    seq[i], seq[j] = seq[j], seq[i]
+        return seq
+
+    if __name__ == '__main__':
+        print(bubble_sort(seq))
+
+    ```
+
+4. 归并排序
+5. 二分查找法
+
+```
+seq = [12, 23, 1, 23, 34, 4]
+seq = sorted(seq)
+
+target = 34
+
+def binary_searach(seq, target):
+    end = len(seq)
+    if end < 1:
+        return False
+    mid = (end)//2
+
+    if target == seq[mid]:
+        return True
+    elif target > seq[mid]:
+        return binary_searach(seq[mid+1:], target)
+    elif target < seq[mid]:
+        return binary_searach(seq[0: mid], target)
+
+print(binary_searach(seq, target))
+```
 
 
 ### 网络知识
