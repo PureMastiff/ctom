@@ -19,4 +19,4 @@ def insert_sort(seq):
 
 
 if __name__ == '__main__':
-    insert_sort(seq)
+    print(insert_sort(seq))
