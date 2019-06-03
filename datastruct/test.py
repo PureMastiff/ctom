@@ -66,6 +66,7 @@ class SLinkedList:
 
 
 
+
 list = SLinkedList()
 list.headval = Node('Mon')
 e2 = Node('Tue')
@@ -79,6 +80,6 @@ list.addEnd('Thr')
 
 list.insert(e2, "Fri")
 
-list.removeNode('Tue')
+#list.removeNode('Tue')
 
 list.listprint()
