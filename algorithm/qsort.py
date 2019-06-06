@@ -1,6 +1,8 @@
 # coding=utf-8
 
 seq = [12, 23, 1, 23, 34, 4]
+
+
 def qsort(seq):
     if seq == []:
         return []
@@ -11,5 +13,6 @@ def qsort(seq):
     return less + [pivot] + greater
 
 
+
 if __name__ == '__main__':
-    print(qsort(seq))
+    print (qsort(seq))
