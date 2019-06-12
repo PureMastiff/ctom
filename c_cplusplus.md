@@ -136,11 +136,10 @@ char *strcpy(char *dst, const char *src)
 
 12.内存四区
 
-
-    | 堆区   |  栈区   | 全局区 | 代码区  |
-    |------  | -----: | -----: |:-----: |
-    | heap   |stack   |  gloal | code   |
-    | malloc/new free/delete| 程序局部变量  临时变量 | 常量 全局变量 操作系统管理| 操作系统管理
+| 堆区   |  栈区   | 全局区 | 代码区  |
+|------  | -----: | -----: |:-----: |
+| heap   |stack   |  gloal | code   |
+| malloc/new free/delete| 程序局部变量  临时变量 | 常量 全局变量 操作系统管理| 操作系统管理
 
 13.间接赋值成立的三个条件
 
@@ -248,11 +247,12 @@ char *convert(char *strDest, const char *strSrc, int length)
 https://blog.csdn.net/qq_29996285/article/details/84337354
 
 https://blog.csdn.net/yawdd/article/details/80010148
-##C++服务端面试总结
-###1.项目
+
+## C++服务端面试总结
+### 1.项目
     讲清楚自己的项目内容，负责的工作，使用的技术，以及碰到的问题如何解决等
     
-###2.C++基础
+### 2.C++基础
     * i++和++i的区别
         * i++是先用后加，直接执行i+1 然后返回i的引用
         * ++i是先加后用，先创建i的副本然后i+1，最后返回副本
@@ -293,19 +293,19 @@ https://blog.csdn.net/yawdd/article/details/80010148
         2. 关联容器
         4中有序关联容器：set multiset map multimap
 
-###3.数据结构和算法
+### 3.数据结构和算法
     
     * 栈和队列的区别
     * 平衡二叉树如何构造
     * 链表中删除一个结点操作
     * 个人对于数据的认识，可以结合实际谈谈
     
-###4.数据库
+### 4.数据库
 
     * 索引是什么，作用及采用的数据结构
     * 数据库优化的方法
     
-###5.计算机网络
+### 5.计算机网络
     
     * TCP/IP模型分层
     * IP协议工作在哪一层
@@ -314,7 +314,7 @@ https://blog.csdn.net/yawdd/article/details/80010148
     * 在三次过程中，如果服务器一直收不到客户端的ack会发生什么
     * TCP和UDP的区别
     
-###6.操作系统的基础
+### 6.操作系统的基础
 
     * 进程和线程的区别
     * 统一进程中的线程之间共享哪些变量
@@ -323,13 +323,13 @@ https://blog.csdn.net/yawdd/article/details/80010148
     * 同步和互斥
     * 死锁是如何产生的 解决方式
     
-###7.linux指令
+### 7.linux指令
     
     * 使用过哪些linux指令
     * 使用linux指令对文本进行词频统计
     * 自身使用linux的体会
     
-###8.分布式系统和linux集群
+### 8.分布式系统和linux集群
 
     * 谈谈你个人对分布式系统的理解
     * 有分布式系统的开发经验吗？
