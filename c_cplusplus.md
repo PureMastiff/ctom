@@ -29,7 +29,10 @@ https://blog.csdn.net/ly0303521/article/details/44306839
     * strcmp(arrayname1, arrayname2) 字符串比较   strncmp()
     arrayname1 和 arrayname2 是需要比较的两个字符串
     字符本身没有大小之分， 比较的是 每个字符对应的ASCII码值进行比较， 返回值  相等返回O 否则非0  大于0或者小于0
+    * strcasecmp() 忽略大小写比较字符串
     * strlen() 返回字符串的实际长度
+    * strstr(s1, s2) 判断s2是否是s1的子串  是的话返回子串的首地址  否则返回null
+    * strchr(const char *s, char c) 查找字符串c首次在s中出现的位置
     
 
 3.C++中 指针和引用的区别
