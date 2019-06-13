@@ -249,8 +249,9 @@ char *convert(char *strDest, const char *strSrc, int length)
     
 18.内存泄漏和内存溢出
 
-    * 内存泄漏：是指程序中一动态分配的堆内存由于某种原因程序未释放或无法释放，造成xitong
-
+    * 内存泄漏：是指程序中一动态分配的堆内存由于某种原因程序未释放或无法释放，造成系统内存的浪费，导致程序运行速度减慢
+甚至系统崩溃等严重后果
+    * 内存溢出：指程序在申请内存的时候，没有足够的内存可以分配，导致内存溢出。通俗的将为：申请了10个字节的空间，但是你在这个空间上写入11或以上的数据，就是溢出。
 https://blog.csdn.net/qq_29996285/article/details/84337354
 
 https://blog.csdn.net/yawdd/article/details/80010148
