@@ -29,7 +29,10 @@ https://blog.csdn.net/ly0303521/article/details/44306839
     * strcmp(arrayname1, arrayname2) 字符串比较   strncmp()
     arrayname1 和 arrayname2 是需要比较的两个字符串
     字符本身没有大小之分， 比较的是 每个字符对应的ASCII码值进行比较， 返回值  相等返回O 否则非0  大于0或者小于0
+    * strcasecmp() 忽略大小写比较字符串
     * strlen() 返回字符串的实际长度
+    * strstr(s1, s2) 判断s2是否是s1的子串  是的话返回子串的首地址  否则返回null
+    * strchr(const char *s, char c) 查找字符串c首次在s中出现的位置
     
 
 3.C++中 指针和引用的区别
@@ -136,11 +139,10 @@ char *strcpy(char *dst, const char *src)
 
 12.内存四区
 
-
-    | 堆区   |  栈区   | 全局区 | 代码区  |
-    |------  | -----: | -----: |:-----: |
-    | heap   |stack   |  gloal | code   |
-    | malloc/new free/delete| 程序局部变量  临时变量 | 常量 全局变量 操作系统管理| 操作系统管理
+| 堆区   |  栈区   | 全局区 | 代码区  |
+|------  | -----: | -----: |:-----: |
+| heap   |stack   |  gloal | code   |
+| malloc/new free/delete| 程序局部变量  临时变量 | 常量 全局变量 操作系统管理| 操作系统管理
 
 13.间接赋值成立的三个条件
 
@@ -252,11 +254,12 @@ char *convert(char *strDest, const char *strSrc, int length)
 https://blog.csdn.net/qq_29996285/article/details/84337354
 
 https://blog.csdn.net/yawdd/article/details/80010148
-##C++服务端面试总结
-###1.项目
+
+## C++服务端面试总结
+### 1.项目
     讲清楚自己的项目内容，负责的工作，使用的技术，以及碰到的问题如何解决等
     
-###2.C++基础
+### 2.C++基础
     * i++和++i的区别
         * i++是先用后加，直接执行i+1 然后返回i的引用
         * ++i是先加后用，先创建i的副本然后i+1，最后返回副本
@@ -297,7 +300,7 @@ https://blog.csdn.net/yawdd/article/details/80010148
         2. 关联容器
         4中有序关联容器：set multiset map multimap
 
-###3.数据结构和算法
+### 3.数据结构和算法
     
     * 栈和队列的区别
     * 平衡二叉树如何构造
@@ -309,12 +312,12 @@ https://blog.csdn.net/yawdd/article/details/80010148
     * 个人对于数据的认识，可以结合实际谈谈
     * 堆排序
     
-###4.数据库
+### 4.数据库
 
     * 索引是什么，作用及采用的数据结构
     * 数据库优化的方法
     
-###5.计算机网络
+### 5.计算机网络
     
     * TCP/IP模型分层
     * IP协议工作在哪一层
@@ -323,7 +326,7 @@ https://blog.csdn.net/yawdd/article/details/80010148
     * 在三次过程中，如果服务器一直收不到客户端的ack会发生什么
     * TCP和UDP的区别
     
-###6.操作系统的基础
+### 6.操作系统的基础
 
     * 进程和线程的区别
     * 多线程多进程多优缺点
@@ -333,13 +336,13 @@ https://blog.csdn.net/yawdd/article/details/80010148
     * 同步和互斥
     * 死锁是如何产生的 解决方式
     
-###7.linux指令
+### 7.linux指令
     
     * 使用过哪些linux指令
     * 使用linux指令对文本进行词频统计
     * 自身使用linux的体会
     
-###8.分布式系统和linux集群
+### 8.分布式系统和linux集群
 
     * 谈谈你个人对分布式系统的理解
     * 有分布式系统的开发经验吗？
