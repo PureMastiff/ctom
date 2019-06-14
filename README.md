@@ -616,6 +616,17 @@ print (money.value)
 
 29. 写一个简单的python socket编程。  server端 client端
 
+
+    创建tcp服务器的一些伪代码：
+    ss = socket()  创建一个服务器socket
+    ss.bind()      绑定一些地址
+    ss.listen()    监听
+    inf_loop      服务器无限循环
+        cs = ss.acept           接受客户端链接
+        loop       通信循环
+            recv／send接收数据或者发送数据
+        cs.close   关闭客户端套接字
+    ss.close 关闭服务器套接字
     server端
     ```python
     import socket
